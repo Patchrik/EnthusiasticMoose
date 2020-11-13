@@ -14,6 +14,14 @@ namespace EnthusiasticMoose
 
             bool isTrue = MooseAsks("Is Canada real?");
             Console.WriteLine(isTrue);
+            if (isTrue)
+            {
+                MooseSays("Really? It seems very unlikely.");
+            }
+            else
+            {
+                MooseSays("I  K N E W  I T  !!!");
+            }
         }
 
         static void MooseSays(string message) 
