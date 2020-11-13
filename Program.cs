@@ -2,31 +2,29 @@
 
 namespace EnthusiasticMoose
 {
-    class Program
+  class Program
+  {
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Welcome to the Enthusiastic Moose Simulator!");
-            Console.WriteLine("--------------------------------------------");
-            Console.WriteLine();
+      Console.WriteLine("Welcome to the Enthusiastic Moose Simulator!");
+      Console.WriteLine("--------------------------------------------");
+      Console.WriteLine();
 
-            MooseSays("I'm having a BASH of a time");
+      MooseSays("I'm having a BASH of a time");
 
-            bool isTrue = MooseAsks("Is Canada real?");
-            Console.WriteLine(isTrue);
-            if (isTrue)
-            {
-                MooseSays("Really? It seems very unlikely.");
-            }
-            else
-            {
-                MooseSays("I  K N E W  I T  !!!");
-            }
-        }
+      Questions("Is Canada real?", "Really? It seems very unlikely.", "I  K N E W  I T  !!!");
 
-        static void MooseSays(string message) 
-        {
-            Console.WriteLine($@"
+      Questions("Are you enthusiastic?", "Yay!", "You should try it!");
+
+      Questions("Do you love C# yet?", "Good job sucking up to your instructor!", "You will...oh, yes, you will...");
+
+      Questions("Do you want to know a secret?", "ME TOO!!!! I love secrets...tell me one!", "Oh, no...secrets are the best, I love to share them!");
+
+    }
+
+    static void MooseSays(string message)
+    {
+      Console.WriteLine($@"
                                        _.--^^^--,
                                     .'          `\
   .-^^^^^^-.                      .'              |
@@ -54,27 +52,40 @@ namespace EnthusiasticMoose
                       \ \'._  ` '_.'
                        `^^` `^^^`
             ");
-        }
-
-        static bool MooseAsks(string question)
-        {
-            Console.Write($"{question} (Y/N): ");
-            string answer = Console.ReadLine().ToLower();
-
-            while (answer != "y" && answer != "n")
-            {
-                Console.Write($"{question} (Y/N): ");
-                answer = Console.ReadLine().ToLower();
-            }
-
-            if (answer == "y")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
+
+    static bool MooseAsks(string question)
+    {
+      Console.Write($"{question} (Y/N): ");
+      string answer = Console.ReadLine().ToLower();
+
+      while (answer != "y" && answer != "n")
+      {
+        Console.Write($"{question} (Y/N): ");
+        answer = Console.ReadLine().ToLower();
+      }
+
+      if (answer == "y")
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+
+    static void Questions(string question, string answerTrue, string answerFalse)
+    {
+      bool isTrue = MooseAsks(question);
+      if (isTrue)
+      {
+        MooseSays(answerTrue);
+      }
+      else
+      {
+        MooseSays(answerFalse);
+      }
+    }
+  }
 }
